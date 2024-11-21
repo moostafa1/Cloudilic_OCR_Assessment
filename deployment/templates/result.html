@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extracted data:</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/static/background2.jpg'); /* Path to your local background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: black;
+        }
+
+        /* Container for centering content and adjusting layout */
+        .container {
+            display: flex;
+            flex-direction: row;  /* Set to row for left-right layout */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: left;  /* Align text to the left */
+        }
+
+        /* Back to Home button */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Style the image */
+        .image-container img {
+            width: 700px;  /* Increased width */
+            height: 700px; /* Increased height */
+            object-fit: contain; /* Keep the aspect ratio */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 30px; /* Increased space between image and text */
+        }
+
+        /* Style the text */
+        .caption {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            max-width: 400px;  /* Decreased the width of the text */
+            word-wrap: break-word;  /* Ensure long text breaks into new lines */
+        }
+    </style>
+</head>
+<body>
+    <!-- Back to Home button -->
+    <button class="back-button" onclick="window.location.href='/';">Back to Home</button>
+
+    <div class="container">
+        <!-- Display the image on the left -->
+        <div class="image-container">
+            <img src="{{ image_src }}" alt="Uploaded Image">
+        </div>
+
+        <!-- Display the caption on the right -->
+        <div class="caption">{{ caption }}</div>
+    </div>
+</body>
+</html>

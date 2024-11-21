@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Invoice Extractor API</title>
+    <style>
+        /* Add background image */
+        body {
+            background-image: url('/static/welcome.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        /* Container for the content */
+        .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Style the heading */
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        /* Style the paragraph */
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        /* Style the form and its elements */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: none;
+            font-size: 1em;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Additional info about the project */
+        .info {
+            font-size: 1em;
+            margin-top: 20px;
+            opacity: 0.8;
+        }
+
+        /* Footer with your name */
+        .footer {
+            margin-top: 30px;
+            font-size: 1em;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to the Invoice Extractor API</h1>
+        <p>Upload an image to extract the text you want from it.</p>
+
+        <!-- Form to upload an image and redirect to the predict route -->
+        <form id="imageForm" action="/predict" method="post" enctype="multipart/form-data">
+            <label for="file">Choose an image:</label>
+            <input type="file" id="file" name="file" accept="image/*" required><br>
+            <button type="submit">Predict</button>
+        </form>
+
+        <div class="info">
+            <p>This project uses both a custom-trained PyTorch model (for Arabic digits extraction) and the Tesseract model (for English digits).</p>
+        </div>
+
+        <div class="footer">
+            <p>Model developed by Mostafa Noaman Ahmed</p>
+        </div>
+    </div>
+</body>
+
+</html>
