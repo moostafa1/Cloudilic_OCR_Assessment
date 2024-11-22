@@ -70,12 +70,11 @@ The `crop_ROIs.py` script takes the saved coordinates and the invoice image to c
 ### 4. ROI processing
 The `image_processing.py` script takes the saved rois from the `data/cropped_rois` and apply the required processing in it to prepare it for being used by the ocr tesseract model.
 
-### Examples of ROI Image Crops
-![ROIs Crop Example 1](images_readme/processed_images/ROI_1.jpg)
-![ROIs Crop Example 2](images_readme/processed_images/ROI_2.jpg)
-![ROIs Crop Example 3](images_readme/processed_images/ROI_3.jpg)
-![ROIs Crop Example 4](images_readme/processed_images/ROI_4.jpg)
-
+### Examples of processed ROI Crops
+<img src="images_readme/processed_images/ROI_1.jpg" width="96" height="16">
+<img src="images_readme/processed_images/ROI_2.jpg" width="96" height="19">
+<img src="images_readme/processed_images/ROI_3.jpg" width="59" height="20">
+<img src="images_readme/processed_images/ROI_4.jpg" width="44" height="25">
 
 
 ### 5. OCR with Tesseract
