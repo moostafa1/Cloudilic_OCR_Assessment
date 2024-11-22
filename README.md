@@ -115,15 +115,8 @@ A lightweight custom PyTorch model was created to handle Arabic digit recognitio
 ## PyTorch Model Architecture
 
 ```python
-import torch
-import torch.nn as nn
-import torch.optim as optim
-from torch.utils.data import DataLoader
-import torchvision.transforms as transforms
-from PIL import Image
-
 class OCRModel(nn.Module):
-    def __init__(self, num_classes=10):  # 21 classes for Arabic digits
+    def __init__(self, num_classes=10):
         super(OCRModel, self).__init__()
         self.conv1 = nn.Conv2d(3, 32, kernel_size=3, stride=1, padding=1)
         self.conv2 = nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1)
@@ -234,7 +227,7 @@ This OCR extraction project aims to streamline invoice data extraction by using 
 ![Example of Prediction](images_readme/minimal_error.PNG)
 
 ### Example of Postman Response From fastapi without html template
-![Example of Postman Response From fastapi without html template](images_readme/fastapi_postman.PNGG)
+![Example of Postman Response From fastapi without html template](images_readme/fastapi_postman.PNG)
 
 ### Example of Postman Response From fastapi with html template
 ![Example of Postman Response From fastapi with html template](images_readme/fastapi_html_rendered.PNG)
