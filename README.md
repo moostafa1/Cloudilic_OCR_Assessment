@@ -67,11 +67,22 @@ The `crop_ROIs.py` script takes the saved coordinates and the invoice image to c
 
 
 
-### 4. OCR with Tesseract
+### 4. ROI processing
+The `image_processing.py` script takes the saved rois from the `data/cropped_rois` and apply the required processing in it to prepare it for being used by the ocr tesseract model.
+
+### Examples of ROI Image Crops
+![ROIs Crop Example 1](images_readme/processed_images/ROI_1.jpg)
+![ROIs Crop Example 2](images_readme/processed_images/ROI_2.jpg)
+![ROIs Crop Example 3](images_readme/processed_images/ROI_3.jpg)
+![ROIs Crop Example 4](images_readme/processed_images/ROI_4.jpg)
+
+
+
+### 5. OCR with Tesseract
 For extracting information such as dates and English letters, Tesseract OCR is used with `eng` or `ara` models. However, the performance of Tesseract is limited when extracting Arabic digits, requiring some additional steps.
 
 
-### 5. Arabic Digit Extraction using Tesseract
+### 6. Arabic Digit Extraction using Tesseract
 To improve OCR accuracy for Arabic digits, a custom Tesseract model was trained using 21 classes for the Arabic digits ('٠' to '٩') and their English counterparts plus the slash "/". However, Tesseract performed suboptimally, I trained it only with 2000 samples as my whole dataest for all classes, it gives moderate accuracy but I think It should works better with enougth data samples, so a PyTorch-based model was developed to handle Arabic digit recognition for now.
 
 ### Examples of custom tesseract model accuracy
@@ -79,7 +90,7 @@ To improve OCR accuracy for Arabic digits, a custom Tesseract model was trained 
 comparing it with real data that shown in the ROI crops above say that it can do better with larger training dataset.
 
 
-### 6. Data Annotation and Generation
+### 7. Data Annotation and Generation
 The process of annotating the digits for training was automated using scripts:
 - `data_class_generator_augmentor.py`: Generates augmented images for training.
 - `image_concatenator.py`: Concatenates images for each class.
@@ -93,7 +104,7 @@ The process of annotating the digits for training was automated using scripts:
 ![Data Combined with Label Boxes in `JtessBoxEditor`](images_readme/jtessbox_annotation.PNG)
 the above labels are generated using the `tesseract_auto_labeler.py` script.
 
-### 7. PyTorch Model for Arabic Digit Recognition
+### 8. PyTorch Model for Arabic Digit Recognition
 A lightweight custom PyTorch model was created to handle Arabic digit recognition. The model is based on a Convolutional Neural Network (CNN) architecture. It consists of three convolutional layers followed by two fully connected layers. The model utilizes max pooling, ReLU activations, and dropout for regularization.
 
 
@@ -135,7 +146,7 @@ class OCRModel(nn.Module):
 
 ## Training Experiments
 
-### 8. Training Process
+### 9. Training Process
 Initially, the model was trained with 5000 samples per Arabic digit class. The accuracy was good, but issues arose when distinguishing between similar digits such as '٥' and '.' or '٦' and '٩'. To improve the model's accuracy, additional creative data generation techniques were applied, including using handwritten English 0 digits and other variations. After additional training and experimentation, the model showed an accuracy of 95.8%, but the issues with '٦' and '٩' persisted.
 
 
@@ -152,7 +163,7 @@ Initially, the model was trained with 5000 samples per Arabic digit class. The a
 
 A final version of the model was trained with 10,000 image samples per class and saved as a TorchScript model for stable deployment.
 
-### 9. Splitting the Numbers into Digits
+### 10. Splitting the Numbers into Digits
 The `number_to_digits_splitter.py` script splits the ROI images containing numbers into individual digits to improve the performance of the classification model. The split digits are saved in `data/image_number_to_splitted_digits`.
 
 ### Examples of numbers or sequence of OCR splitted into digits using `number_to_digits_splitter.py`
@@ -181,19 +192,19 @@ The `number_to_digits_splitter.py` script splits the ROI images containing numbe
 
 
 
-### 10. Summary
+### 11. Summary
 The project combines Tesseract OCR for English text and a custom PyTorch model for Arabic digit recognition. The PyTorch model was developed to handle the complexities of Arabic digit extraction and improve the overall accuracy.
 
-### 11. Trials and Issues
+### 12. Trials and Issues
 
 - **Arabic OCR Model**: Tesseract's Arabic OCR model was not fast enough and required a GPU for optimal performance.
 - **EasyOCR**: EasyOCR also provided poor accuracy for Arabic digits.
 - **Digit Confusion**: The main issue during the training was the confusion between similar Arabic digits ('٦' and '٩') and English digits (such as '.' and '٥').
 
-### 12. Current Status and Future Work
+### 13. Current Status and Future Work
 The project is still under development, focusing on resolving the digit confusion problem. The PyTorch model continues to improve with ongoing data collection and model training.
 
-### 13. Concluding Remarks
+### 14. Concluding Remarks
 This OCR extraction project aims to streamline invoice data extraction by using advanced OCR techniques for both English and Arabic characters. The model is continually being improved to achieve better performance and accuracy.
 
 
