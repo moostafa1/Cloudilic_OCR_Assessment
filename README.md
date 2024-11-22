@@ -61,8 +61,11 @@ The `crop_ROIs.py` script takes the saved coordinates and the invoice image to c
 
 ### Examples of ROI Image Crops
 ![ROIs Crop Example 1](images_readme/cropped_rois/ROI_1.jpg)
+
 ![ROIs Crop Example 2](images_readme/cropped_rois/ROI_2.jpg)
+
 ![ROIs Crop Example 3](images_readme/cropped_rois/ROI_3.jpg)
+
 ![ROIs Crop Example 4](images_readme/cropped_rois/ROI_4.jpg)
 
 
