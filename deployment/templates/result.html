@@ -44,7 +44,7 @@
         /* Style the image */
         .image-container img {
             width: 700px;  /* Increased width */
-            height: 700px; /* Increased height */
+            height: 900px; /* Increased height */
             object-fit: contain; /* Keep the aspect ratio */
             border: 1px solid #ddd;
             border-radius: 5px;
@@ -72,7 +72,9 @@
         </div>
 
         <!-- Display the caption on the right -->
-        <div class="caption">{{ caption }}</div>
+        <!-- [safe] ensures the <br> tags are interpreted as HTML line breaks rather than plain text. -->
+        <div class="caption">{{ caption | safe }}</div>
+
     </div>
 </body>
 </html>

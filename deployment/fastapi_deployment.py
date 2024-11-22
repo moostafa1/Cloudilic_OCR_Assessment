@@ -50,7 +50,7 @@ async def predict_image_caption(request: Request, file: UploadFile = File(...)):
 
         return templates.TemplateResponse("result.html", {
             "request": request,
-            "caption": invoice_data,
+            "caption": invoice_data[1:-1].replace('"', '').replace(",", "<br>"),
             "image_src": image_src
         })
 
