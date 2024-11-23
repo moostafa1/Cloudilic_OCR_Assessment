@@ -209,15 +209,42 @@ This OCR extraction project aims to streamline invoice data extraction by using 
 
 - `config.py`: Contains a dictionary of keys and the corresponding paths for dynamic path update with different devices.
 
-- `google_drive_update_tracker.py`: Tracks and downloads newly uploaded invoice images from Google Drive.
+- `google_drive_update_tracker_admin.py`
+    - Tracks and downloads newly uploaded files from a specified Google Drive folder.
+    - **Authentication**: Uses **Service Accounts** from Google Cloud Services.
+    - **Use Case**: Ideal for **server-side administration**, where the application requires continuous, programmatic access to shared or system-specific Drive resources without user intervention.
+
+-  `google_drive_update_tracker.py`
+    - Tracks and downloads newly uploaded files from a specified Google Drive folder.
+    - **Authentication**: Uses **OAuth 2.0 Credentials** from Google Cloud Services.
+    - **Use Case**: Designed for **end-user connections**, allowing users to log in with their Google accounts via a secure OAuth 2.0 flow to access their personal or shared Drive folders.
+
+## Key Differences
+
+| Feature                     | **Service Accounts**                                 | **OAuth 2.0 Credentials**                      |
+|-----------------------------|----------------------------------------------------|-----------------------------------------------|
+| **Purpose**                 | Server-side, programmatic access                   | End-user authentication and access            |
+| **Authentication Flow**     | JSON key file, no user interaction required        | User login via browser with OAuth consent     |
+| **Access**                  | Limited to shared resources                        | Full access to user-granted resources         |
+| **Use Case**                | Automation, shared system resources                | Personal, user-specific workflows             |
+
+
 - `coordinates_data.json`: Generated using `get_data_coordinates.py`. Allows the user to select regions of interest from the invoice images.
+
 - `crop_ROIs.py`: Crops the regions of interest based on the selected coordinates.
+
 - `image_processing.py`: Prepares images for OCR English digits processing.
+
 - `number_to_digits_splitter.py`: Splits numbers into individual digits.
+
 - `invoice_extraction_models.py`: call the tesseract and the pytorch model for OCR.
+
 - `main.py`: gather all the above code.
+
 - `fastapi_postman.py`: Designed for use with Postman, this version delivers pure JSON responses without any embedded HTML code.
+
 - `fastapi_deployment.py`: A more professionally deployed version featuring an HTML and CSS layout, interactive buttons, and a well-presented display of results.
+
 
 ### Example of Invoice Image to Upload
 ![Invoice Image](images_readme/Invoices/Invoice_arabic.jpeg)
