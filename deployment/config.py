@@ -12,4 +12,7 @@ CONFIG = {
     "torch_model_path": os.path.join(BASE_DIR, "models", "ocr_model_traced.pt"),
     "digits_dir": os.path.join(BASE_DIR, "data", "image_number_to_splitted_digits"),
     "output_json": os.path.join(BASE_DIR, "invoice_ocr.json"),
+    "credentials_path": os.path.join(BASE_DIR, "secrets", "credentials.json"),
+    "service_account_path": os.path.join(BASE_DIR, "secrets", "service_account.json"),
+    "token_path": os.path.join(BASE_DIR, "secrets", "token.json"),
 }
