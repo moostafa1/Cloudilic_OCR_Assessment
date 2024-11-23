@@ -3,6 +3,13 @@ from PIL import Image
 import cv2
 import numpy as np
 
+"""
+script written for the creative dataset resizing and dilation
+I used it when decide to collect data for the '٥' arabic digit 
+and for the '٩' arabic digit, to make them in the correct size.
+"""
+
+
 def dilate_image(image, kernel_size=(5, 5), iterations=1):
     """
     Applies dilation to the given image.
