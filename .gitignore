@@ -1,3 +1,1 @@
-deployment/credentials.json
-deployment/service_account.json
-tried_codes/service_account.json
+deployment/secrets/
