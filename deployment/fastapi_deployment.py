@@ -5,15 +5,10 @@ from fastapi.staticfiles import StaticFiles
 from io import BytesIO
 import base64
 from PIL import Image
-from remove_old_data import clean_directory
 from main import image_text_extractor
 from config import CONFIG
 
 
-# remove the data for the last prediction
-print(clean_directory(CONFIG["processed_images_dir"]))
-print(clean_directory(CONFIG["digits_dir"]))
-print(clean_directory(CONFIG["cropped_rois_dir"]))
 
 # Create FastAPI instance
 app = FastAPI()

@@ -4,11 +4,6 @@ import os
 import json
 
 
-from config import CONFIG
-import cv2
-import os
-import json
-
 
 def crop_roi():
     try:

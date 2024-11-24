@@ -34,7 +34,7 @@ def ocr_dates_eng_digits(rois_path):
         img = cv2.imread(image_path)
 
         
-        text = pytesseract.image_to_string(img, lang='ara')   # ara_digits
+        text = pytesseract.image_to_string(img, lang='ara')   # ara_digits  ara
         # print(text)
         
         # Assuming you're extracting text by some keyword matching:
@@ -122,7 +122,7 @@ if __name__ == "__main__":
     for num in arabic_images:
         dir_name = num.split('.')[0]
         data[dir_name] = ""
-        number_image_path = os.path.join(CONFIG["cropped_rois_dir"], num)
+        number_image_path = os.path.join(CONFIG["pro"], num)
         digits_images_path = os.path.join(CONFIG["digits_dir"], dir_name)
         extract_digits(number_image_path, digits_images_path)
 

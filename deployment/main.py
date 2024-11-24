@@ -9,6 +9,7 @@ from torchvision import transforms
 from number_to_digits_splitter import extract_digits
 from crop_ROIs import crop_roi
 from image_processing import preprocess_image
+from remove_old_data import clean_directory
 from invoice_extraction_models import ocr_dates_eng_digits, ocr_arabic_digits
 
 
@@ -35,6 +36,11 @@ from invoice_extraction_models import ocr_dates_eng_digits, ocr_arabic_digits
 
 
 def image_text_extractor(invoice_image_path):
+    # remove the data for the last prediction
+    print(clean_directory(CONFIG["processed_images_dir"]))
+    print(clean_directory(CONFIG["digits_dir"]))
+    print(clean_directory(CONFIG["cropped_rois_dir"]))
+
     # step 1: crop the region of interest of the data we're going to extract:
     # invoice number, date, total amount, second product cost
     crop_roi()
@@ -95,7 +101,7 @@ def image_text_extractor(invoice_image_path):
     
     # save extracted data to json file
     json_string = json.dumps(actual_data, ensure_ascii=False, indent=4)
-    with open("data/invoice_ocr.json", 'w', encoding="utf-8") as f: # 'a'
+    with open(CONFIG["output_json"], 'w', encoding="utf-8") as f: # 'a'
         f.write(json_string)
         # json.dump(actual_data, f, indent=4)
     # json_string = append_to_json(actual_data, file_path="data/invoice_ocr.json")
@@ -103,5 +109,5 @@ def image_text_extractor(invoice_image_path):
 
 
 if __name__ == "__main__":
-    invoice_image_path = CONFIG["output_json"]
+    invoice_image_path = CONFIG["invoice_image_path"]
     image_text_extractor(invoice_image_path)
